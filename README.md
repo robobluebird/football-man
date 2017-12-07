@@ -1,2 +1,2 @@
 # football-man
-expressjs app for getting football stats for the week
+express.js app for getting football stats for the week
