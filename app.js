@@ -1,3 +1,6 @@
+// most of this file is boiler plate provided by Express
+// it's probably "a bit much" for a tiny test app, but it does show
+// the framework following the "convention over configuration" paradigm
 var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');
@@ -20,27 +23,30 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 // main index page
+// express apps use matcher callbacks to determine what code gets run on a request
+// this "index" route tells the app to render the "index" template (views/index.pug)
 app.get('/', (request, response) => {
   response.render('index')
 })
 
-// use express router in file path "/routes/games"
+// use the Express Router in file path "/routes/game"
+// we can store logically separete route collections in separate files
+// and pull them in with require()
 app.use('/api/games/', games);
 
 // catch 404 and forward to error handler
+// express apps "fall through" if no url is matched.
+// here we create an error for 404 and call next()
+// which forces the app to "fall through" again
 app.use(function(req, res, next) {
-  var err = new Error('Not Found');
+  var err = new Error('This is not the page you are looking for');
   err.status = 404;
   next(err);
 });
 
 // error handler
+// this is the bottom of the handlers and it renders a json error
 app.use(function(err, req, res, next) {
-  // set locals, only providing error in development
-  res.locals.message = err.message;
-  res.locals.error = req.app.get('env') === 'development' ? err : {};
-
-  // render the error page
   res.status(err.status || 500);
   res.json(err.message)
 });

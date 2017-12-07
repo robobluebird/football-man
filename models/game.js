@@ -8,9 +8,13 @@ class Game {
   }
 
   finalScore () {
+
+    // new fancy JS here...backticks = string with interpolation!
     return `${this.homeTeam.abbreviatedName} ${this.homeTeam.score} - ${this.awayTeam.abbreviatedName} ${this.awayTeam.score}`
   }
 
+  // I prefer to let objects be able to answer "what do you look like in JSON format?"
+  // rather than using a service object to do so (e.g. GameSerializer etc)
   toJSON () {
     return {
       home: {
