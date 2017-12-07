@@ -33,7 +33,7 @@ class FootballMan {
 
         return new Promise((resolve, reject) => {
           this.client.get(`http://www.nfl.com/liveupdate/game-center/${eid}/${eid}_gtd.json`, (data, response) => {
-            if (response.statusCode == 200 && data) {
+            if (response.statusCode == 200 && data && data[eid]) {
               resolve(data[eid])
             } else {
               resolve(null)
