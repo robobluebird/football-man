@@ -10,6 +10,7 @@
     "cookie-parser": "~1.4.3",
     "debug": "~2.6.9",
     "express": "~4.15.5",
+    "forever": "^0.15.3",
     "morgan": "~1.9.0",
     "node-rest-client": "^3.1.0",
     "node-xml-lite": "0.0.7",
