@@ -45,6 +45,7 @@ class FootballMan {
       Promise.all(promises).then( games => {
         if ([...new Set(games)].length == 1) {
           errorCallback(404, `No game data available for week ${weekInt}`)
+          return
         } else {
           games = games.filter( elem => elem != null )
         }
