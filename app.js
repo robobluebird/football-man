@@ -48,7 +48,7 @@ app.use(function(req, res, next) {
 // this is the bottom of the handlers and it renders a json error
 app.use(function(err, req, res, next) {
   res.status(err.status || 500);
-  res.json(err.message)
+  res.json({ error: err.message})
 });
 
 module.exports = app;

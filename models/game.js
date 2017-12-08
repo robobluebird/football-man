@@ -8,7 +8,6 @@ class Game {
   }
 
   finalScore () {
-
     // new fancy JS here...backticks = string with interpolation!
     return `${this.homeTeam.abbreviatedName} ${this.homeTeam.score} - ${this.awayTeam.abbreviatedName} ${this.awayTeam.score}`
   }
@@ -20,18 +19,18 @@ class Game {
       home: {
         score: this.homeTeam.score,
         team_abbrv: this.homeTeam.abbreviatedName,
-        top_passer: this.homeTeam.topPasser.name,
-        top_receiver: this.homeTeam.topReceiver.name,
-        top_rusher: this.homeTeam.topRusher.name,
+        top_passer: this.homeTeam.topPasserName(),
+        top_receiver: this.homeTeam.topReceiverName(),
+        top_rusher: this.homeTeam.topRusherName(),
         yards_passed: this.homeTeam.passYards,
         yards_rushed: this.homeTeam.rushYards
       },
       away: {
         score: this.awayTeam.score,
         team_abbrv: this.awayTeam.abbreviatedName,
-        top_passer: this.awayTeam.topPasser.name,
-        top_receiver: this.awayTeam.topReceiver.name,
-        top_rusher: this.awayTeam.topRusher.name,
+        top_passer: this.awayTeam.topPasserName(),
+        top_receiver: this.awayTeam.topReceiverName(),
+        top_rusher: this.awayTeam.topRusherName(),
         yards_passed: this.awayTeam.passYards,
         yards_rushed: this.awayTeam.rushYards
       },

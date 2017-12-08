@@ -27,6 +27,18 @@ class Team {
     this.rushYards = teamData.stats.team.ryds
   }
 
+  topPasserName () {
+    return this.topPasser ? this.topPasser.name : null
+  }
+
+  topRusherName () {
+    return this.topRusher ? this.topRusher.name : null
+  }
+
+  topReceiverName () {
+    return this.topReceiver ? this.topReceiver.name : null
+  }
+
   unwindObjects (keyValuePairs) {
     var ary = []
 

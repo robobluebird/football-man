@@ -39,7 +39,6 @@ class FootballMan {
     }
 
     this.week(weekInt, weekData => {
-
       // why promises? see a few lines down
       let promises = weekData['childs'][0]['childs'].map( data => {
         let eid = data['attrib']['eid']
@@ -68,7 +67,6 @@ class FootballMan {
       // this .all() method says "take all these promises, and run them all at once,
       // when all promises are resolved then call this callback"
       Promise.all(promises).then( games => {
-
         // collapse the result array into unique values
         // any week that doesn't have data will be null
         // SO 1 game and the rest nulls (a partial week) will NOT have a unique length of 1
