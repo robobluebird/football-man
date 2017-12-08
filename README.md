@@ -30,7 +30,11 @@ npm install
 ```
 npm start
 ```
-
+5. (optional) fancy startup - use the "forever" package to start the app, and then it will make sure the app gets restarted if it dies, etc. notice we poke right into `./bin/www` which is a unix executable. this is what npm start does anyway! I use this on the server so I (assumedly) don't have to worry if the Node process dies
+```
+npm install forever -g
+forever start ./bin/www
+```
 # why Express?
 1. To familiarize myself with Node, and a very common framework used with Node
 2. To test the feasibility of Express for quick prototyping
@@ -44,7 +48,8 @@ npm start
 1. Express makes it dead simple to fire up a Node app with RESTful routing built right in
 2. Node has a lot of power that i didn't even touch on yet (the whole non-blocking IO thing)
 3. Heroku spoils me
-4. Javascript is getting better syntactically (thank the lord for the => function def!)
+4. The new stuff in Javascript is really cool and useful (thank the lord for the => function def!)
+5. Go Steelers!
 
 # my nginx config
 I'm using nginx to reverse-proxy to the Node app, here's my tiny config for that:
