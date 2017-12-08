@@ -39,3 +39,40 @@ npm start
 # why EC2? why not Elastic Beanstalk or Heroku
 1. To remove some of the magic that Heroku et al provide in terms of code deployment, process starts, etc
 2. To remember some nginx stuff that I continually forget
+
+# what i learned
+1. Express makes it dead simple to fire up a Node app with RESTful routing built right in
+2. Node has a lot of power that i didn't even touch on yet (the whole non-blocking IO thing)
+3. Heroku spoils me
+4. Javascript is getting better syntactically (thank the lord for the => function def!)
+
+# my nginx config
+I'm using nginx to reverse-proxy to the Node app, here's my tiny config for that:
+```
+server {
+  listen 80 default_server;
+  listen [::]:80 default_server;
+
+  # listen 443 ssl default_server;
+  # listen [::]:443 ssl default_server;
+
+  root /home/ubuntu/apps/football-man;
+
+  server_name football-man;
+
+  location / {
+    root /home/ubuntu/apps/football-man/public;
+    try_files $uri @nodejs;
+  }
+
+  location @nodejs {
+    proxy_pass http://localhost:3000;
+    proxy_http_version 1.1;
+    proxy_set_header Upgrade $http_upgrade;
+    proxy_set_header Connection 'upgrade';
+    proxy_set_header Host $host;
+    proxy_cache_bypass $http_upgrade;
+  }
+}
+```
+The only interesting part is where we let nginx handle static assets served from the Node app's public directory (that way we don't waste cycles doing it in-app)
